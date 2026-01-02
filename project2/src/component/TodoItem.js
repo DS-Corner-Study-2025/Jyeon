@@ -1,6 +1,9 @@
 import "./TodoItem.css";
+import { TodoDispatchContext } from "./App"
 
-const TodoItem =({id, content, isDone,createDate, onUpdate, onDelte})=>{
+const TodoItem =({id, content, isDone,createDate})=>{
+    console.log('${id} TodoItem 업데이트');
+    const {onUpdate,onDelete} = useContext(TodoDispatchContext);
     const onChangeCheckbox=()=>{
         onUpdate(id);
     };
@@ -21,4 +24,4 @@ const TodoItem =({id, content, isDone,createDate, onUpdate, onDelte})=>{
         </div>
     );
 };
-export default TodoItem;
+export default React.memo(TodoItem);
